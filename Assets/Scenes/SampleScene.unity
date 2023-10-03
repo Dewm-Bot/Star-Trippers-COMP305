@@ -2431,3 +2431,5 @@ MonoBehaviour:
   playerJumpForce: 200
   worldGravity: 5
   playerCanJump: 1
+  boostDelay: 1
+  boostSpeed: 3
