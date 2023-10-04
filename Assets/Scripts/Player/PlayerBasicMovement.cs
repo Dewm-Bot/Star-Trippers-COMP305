@@ -30,7 +30,7 @@ public class PlayerBasicMovement : MonoBehaviour
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         boostTimer += Time.deltaTime;
-        Debug.Log(boostApply);
+        //Debug.Log(boostApply);
         if (Input.GetButtonDown("Horizontal"))
         {
             playerRb.AddForce(new Vector2(playerPushForce * horizontalMovement, 0));
@@ -66,7 +66,7 @@ public class PlayerBasicMovement : MonoBehaviour
     private void Boost()
     {
         float boostSpeedSet = boostSpeed; //Applies wanted value to boostSpeedSet (I have no idea why this is needed, but it breaks without)
-        Debug.Log(boostSpeedSet);
+        //Debug.Log(boostSpeedSet);
         if (boostTimer > boostDelay)
         {
             boostApply = boostSpeedSet; 
