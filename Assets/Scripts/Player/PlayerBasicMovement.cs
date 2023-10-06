@@ -33,7 +33,7 @@ public class PlayerBasicMovement : MonoBehaviour
         //Debug.Log(boostApply);
         if (Input.GetButtonDown("Horizontal"))
         {
-            playerRb.AddForce(new Vector2(playerPushForce * horizontalMovement, 0));
+            //playerRb.AddForce(new Vector2(playerPushForce * horizontalMovement, 0));
             lastDirection = horizontalMovement;
         }
         if (Input.GetButtonDown("Jump") && playerCanJump)
