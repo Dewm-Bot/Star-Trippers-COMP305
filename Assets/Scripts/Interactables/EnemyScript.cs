@@ -5,6 +5,12 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     private PlayerHealthTextScript PHTS;
+    
+    private float hurtdelay = 0f;
+    [SerializeField]
+    private float delayBetweenHits = 1f;
+    [SerializeField]
+    private double damage = 10;
 
     private void Awake()
     {
@@ -15,9 +21,19 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameObject.Find("Player").GetComponent<PlayerHealthScript>().playerHealth -= 10;
-            PHTS.UpdatePlayerHealthText();
-            Destroy(this.gameObject);
+            if (hurtdelay > delayBetweenHits)
+            {
+                GameObject.Find("Player").GetComponent<PlayerHealthScript>().playerHealth -= damage;
+                PHTS.UpdatePlayerHealthText();
+                hurtdelay = 0;
+            }
+            
+            
         }
+    }
+
+    private void FixedUpdate()
+    {
+        hurtdelay += Time.deltaTime;
     }
 }

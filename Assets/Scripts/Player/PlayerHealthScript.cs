@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealthScript : MonoBehaviour
 {
-    public int playerHealth;
+    public double playerHealth;
 
     public void Start()
     {
