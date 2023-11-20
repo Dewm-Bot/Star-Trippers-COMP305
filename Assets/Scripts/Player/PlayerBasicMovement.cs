@@ -18,16 +18,20 @@ public class PlayerBasicMovement : MonoBehaviour
     private float horizontalMovement = 0f;
     private float lastDirection = 0f;
     private bool isFacingRight = true;
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("speed", Mathf.Abs(playerRb.velocity.x));
+        anim.SetFloat("jumping", Mathf.Abs(playerRb.velocity.y));
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         boostTimer += Time.deltaTime;
         //Debug.Log(boostApply);
