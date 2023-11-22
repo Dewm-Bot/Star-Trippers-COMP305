@@ -2560,31 +2560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5309d640394d44646b0f06be17512064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1051839406 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5640456756574133295, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
-  m_PrefabInstance: {fileID: 5640456756468144001}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1051839413
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1051839406}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6165a74c6a7e1bc4296cacada4d3c0c0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1367121947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,6 +2742,8 @@ MonoBehaviour:
   headPos: {fileID: 813325349}
   flipSprite: 0
   hurtSphereSize: 0.01
+  health: 0
+  maxHealth: 100
 --- !u!1001 &4154622586656652455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2831,10 +2808,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5640456756574133294, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 137445883, guid: 10c6fca27936b814584f49d681c454ef, type: 3}
     - target: {fileID: 5640456756574133295, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2883,30 +2856,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5640456756574133299, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
-      propertyPath: m_Size.x
-      value: 0.5185795
+    - target: {fileID: 5640456756574133298, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
+      propertyPath: hasGun
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5640456756574133299, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
-      propertyPath: m_Size.y
-      value: 0.7302861
+    - target: {fileID: 5640456756574133298, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 5640456756574133299, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.011550903
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640456756574133299, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.018562078
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640456756574133299, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.46875
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640456756574133299, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.71875
-      objectReference: {fileID: 0}
+    - target: {fileID: 5640456756574133298, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 6172641738032810327, guid: 3548d553546145741b962cf86a87e976, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc2706a42c9c9042a72968c4a1ad1dc, type: 3}
 --- !u!1001 &6975853598683189676

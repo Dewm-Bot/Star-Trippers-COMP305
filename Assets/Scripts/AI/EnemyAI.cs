@@ -21,6 +21,10 @@ public class EnemyAI : MonoBehaviour
     private int flippy2;
     [SerializeField]
     private float hurtSphereSize = 0.2f;
+    [SerializeField]
+    private double health;
+    [SerializeField]
+    private double maxHealth = 100;
 
     public void Reset()
     {
@@ -55,15 +59,15 @@ public class EnemyAI : MonoBehaviour
     public void Update()
     {
        NextWaypoint();
-        if (HeadHit() == true)
+        if (HeadHit() == true) //Destroy ourselves on head hit!
         {
-            Destroy(gameObject);
+            die();
         }
     }
 
     public void Start()
     {
-        if (flipSprite == true)
+        if (flipSprite == true) //This just checks if the sprite needs to be flipped via script and flips it's values.
         {
             flippy1 = -1;
             flippy2 = 1;
@@ -73,9 +77,19 @@ public class EnemyAI : MonoBehaviour
             flippy1 = 1;
             flippy2 = -1;
         }
+        health = maxHealth;
     }
 
-    private bool HeadHit()
+    public void TakeDamage(int damage) //This is for projectile damage
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            die();
+        }
+    }
+
+    private bool HeadHit() //Check if our head has been hit!
     {
         return Physics2D.OverlapCircle(headPos.transform.position, hurtSphereSize, playerTag);
     }
@@ -104,5 +118,9 @@ public class EnemyAI : MonoBehaviour
             }
             nextID += idChangeValue;
         }
+    }
+    private void die()
+    {
+        Destroy(gameObject); //We can change this to do something fancier later.
     }
 }

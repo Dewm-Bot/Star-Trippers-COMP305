@@ -7,11 +7,11 @@ public class PlayerHealthTextScript : MonoBehaviour
 {
     public TMP_Text playerHealthText;
 
-    private PlayerHealthScript PHS;
+    private PlayerBasicMovement PHS;
 
     private void Awake()
     {
-        PHS = GameObject.Find("Player").GetComponent<PlayerHealthScript>();
+        PHS = GameObject.Find("Player").GetComponent<PlayerBasicMovement>();
     }
     public void UpdatePlayerHealthText()
     {

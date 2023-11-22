@@ -15,7 +15,7 @@ public class HealthPackScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameObject.Find("Player").GetComponent<PlayerHealthScript>().playerHealth += 10;
+            GameObject.Find("Player").GetComponent<PlayerBasicMovement>().playerHealth += 10;
             PHTS.UpdatePlayerHealthText();
             Destroy(this.gameObject);
         }

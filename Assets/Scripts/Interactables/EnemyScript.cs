@@ -21,9 +21,9 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (hurtdelay > delayBetweenHits)
+            if (hurtdelay > delayBetweenHits) //checks if there has been a significant amount of delay between hits
             {
-                GameObject.Find("Player").GetComponent<PlayerHealthScript>().playerHealth -= damage;
+                GameObject.Find("Player").GetComponent<PlayerBasicMovement>().playerHealth -= damage;
                 PHTS.UpdatePlayerHealthText();
                 hurtdelay = 0;
             }
@@ -31,6 +31,7 @@ public class EnemyScript : MonoBehaviour
             
         }
     }
+
 
     private void FixedUpdate()
     {
