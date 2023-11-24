@@ -98,6 +98,10 @@ public class PlayerBasicMovement : MonoBehaviour
         {
             Shoot();
         }
+        if (Input.GetKey(KeyCode.Escape)) 
+        {
+            Application.Quit();
+        }
     }
 
     private void Flip()
