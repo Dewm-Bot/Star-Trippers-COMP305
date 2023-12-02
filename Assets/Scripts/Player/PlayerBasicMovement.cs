@@ -60,6 +60,7 @@ public class PlayerBasicMovement : MonoBehaviour
         anim.SetFloat("speed", Mathf.Abs(playerRb.velocity.x));
         anim.SetFloat("jumping", Mathf.Abs(playerRb.velocity.y));
         anim.SetBool("dead", isDead);
+        anim.SetBool("hasGun", hasGun);
 
     }
 
