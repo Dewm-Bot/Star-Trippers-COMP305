@@ -39,7 +39,7 @@ public class PlayerBasicMovement : MonoBehaviour
     [SerializeField]
     private float bulletSpeed = 10f;
     public bool hasGun = false;
-    private float spawnDistance = 1f; //Spawn buffer distance for our bullet
+    private float spawnDistance = 0.6f; //Spawn buffer distance for our bullet
 
     //animator stuff
     Animator anim;
