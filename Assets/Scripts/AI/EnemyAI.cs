@@ -25,6 +25,8 @@ public class EnemyAI : MonoBehaviour
     private double health;
     [SerializeField]
     private double maxHealth = 100;
+    [SerializeField]
+    private int scoreUponKill = 10;
 
     public void Reset()
     {
@@ -121,6 +123,7 @@ public class EnemyAI : MonoBehaviour
     }
     private void die()
     {
+        GameObject.Find("Player").GetComponent<PlayerBasicMovement>().score += scoreUponKill;
         Destroy(gameObject); //We can change this to do something fancier later.
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerBasicMovement : MonoBehaviour
 {
@@ -45,12 +46,20 @@ public class PlayerBasicMovement : MonoBehaviour
     Animator anim;
     private bool isDead = false; //send if the player is dead to animator
 
+    //Score and Lives Stuff
+    [SerializeField]
+    private int maxLives = 3;
+    private int lives = 3;
+    public int score = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody2D>(); 
+        playerRb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        playerHealth = maxHealth; 
+        playerHealth = maxHealth;
+        lives = maxLives;
     }
 
     //Updates at fixed time intervals, good for consistency
@@ -61,7 +70,6 @@ public class PlayerBasicMovement : MonoBehaviour
         anim.SetFloat("jumping", Mathf.Abs(playerRb.velocity.y));
         anim.SetBool("dead", isDead);
         anim.SetBool("hasGun", hasGun);
-
     }
 
     // Update is called once per frame
@@ -131,8 +139,18 @@ public class PlayerBasicMovement : MonoBehaviour
 
     private void Dead()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        lives--;
+        if (lives < 0)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+        else
+        {
+            Scene scene = SceneManager.GetSceneAt(1);
+            SceneManager.LoadScene(scene.name);
+        }
+        
     }
 
     void Shoot()
