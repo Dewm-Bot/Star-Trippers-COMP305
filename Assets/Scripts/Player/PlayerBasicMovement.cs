@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
+using Unity.VisualScripting;
 
 public class PlayerBasicMovement : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class PlayerBasicMovement : MonoBehaviour
     private float horizontalMovement = 0f;
     private float lastDirection = 0f;
     private bool isFacingRight = true;
+    [SerializeField]
+    private float jumpDelay = 0.1f;
+    private float jumpTimer = 0f;
 
 
     //health stuff
@@ -52,6 +56,12 @@ public class PlayerBasicMovement : MonoBehaviour
     private int lives = 3;
     public int score = 0;
 
+    //Sound Stuff
+    private AudioSource soundsrc;
+    [SerializeField]
+    private AudioClip BoosterSound = null;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +70,7 @@ public class PlayerBasicMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         playerHealth = maxHealth;
         lives = maxLives;
+        soundsrc = GetComponent<AudioSource>();
     }
 
     //Updates at fixed time intervals, good for consistency
@@ -70,6 +81,10 @@ public class PlayerBasicMovement : MonoBehaviour
         anim.SetFloat("jumping", Mathf.Abs(playerRb.velocity.y));
         anim.SetBool("dead", isDead);
         anim.SetBool("hasGun", hasGun);
+        if (playerRb.velocity.y < 0.1f && playerRb.velocity.y > -0.1f)
+        {
+            jumpTimer += Time.deltaTime;
+        }
     }
 
     // Update is called once per frame
@@ -92,10 +107,11 @@ public class PlayerBasicMovement : MonoBehaviour
             //playerRb.AddForce(new Vector2(playerPushForce * horizontalMovement, 0));
             lastDirection = horizontalMovement;
         }
-        if (Input.GetButtonDown("Jump") && playerCanJump && !isDead)
+        if (Input.GetButtonDown("Jump") && playerCanJump && !isDead && jumpTimer > jumpDelay)
         {
             playerRb.AddForce(new Vector2(0, playerJumpForce));
             playerCanJump = false;
+            jumpTimer = 0;
         }
         if (boostApply > 1.5f) //make sure the 1.5 is the base speed you want, also change the boostApply private var to preffered value
         {
@@ -133,6 +149,11 @@ public class PlayerBasicMovement : MonoBehaviour
         {
             boostApply = boostSpeedSet; 
             boostTimer = 0.0f; //set boost speed and reset timer
+            if (soundsrc.isPlaying)
+            {
+                soundsrc.Stop();
+            }
+            soundsrc.PlayOneShot(BoosterSound);
         }
         
     }

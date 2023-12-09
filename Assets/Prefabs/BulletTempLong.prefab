@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6285846381329935038}
   - component: {fileID: 2908639756282016711}
   m_Layer: 0
-  m_Name: BulletTemp
+  m_Name: BulletTempLong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  lifetime: 2
+  lifetime: 4
 --- !u!58 &-8458338152526709947
 CircleCollider2D:
   m_ObjectHideFlags: 0
